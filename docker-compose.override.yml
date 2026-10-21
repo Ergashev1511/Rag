@@ -1,0 +1,10 @@
+# Lokal: Ollama alohida (oldindan yaratilgan) konteynerda ishlaydi, porti faqat 127.0.0.1 ga ochiq.
+# api shu konteyner network iga ulanadi va Ollama ga konteyner nomi bilan murojaat qiladi (EMBEDDING_BASE_URL).
+services:
+  api:
+    networks: [rag, ollama-net]
+
+networks:
+  ollama-net:
+    external: true
+    name: ${OLLAMA_NETWORK:?.env da OLLAMA_NETWORK ni yozing (Ollama konteyneri ulangan docker network)}
